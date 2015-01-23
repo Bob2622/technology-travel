@@ -1,0 +1,14 @@
+1. 安装ubuntu 12.04后发现git 命令不能自动补全，不管你按了多少下table键，都没反映
+	修改地点：
+	/etc/bash.bashrc
+	把下面内容的注释符去掉
+
+	点击(此处)折叠或打开
+
+	    if [ -f /etc/bash_completion ] &&! shopt -oq posix; then
+	    . /etc/bash_completion
+	    fi
+
+	然后重启终端就ok了
+
+2. 
