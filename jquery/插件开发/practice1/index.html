@@ -1,0 +1,67 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+    <meta charset="utf-8"> 
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    <title></title> 
+</head>
+<body>
+    <h1></h1>
+    <select id="test">
+        
+    </select>
+<script type="text/javascript">
+    /*
+     * 功能： select框下拉框是今后几天的时间
+     *
+     *
+     *
+     *
+     */
+    (function($){
+        var methods = {
+            init: function(options) {
+                alert();
+                var options = $.extend({
+                    totalNum: 7,
+                    dateFormat: "",
+                    startDay: new Date(),
+                    endDay: ""
+                }, options || {}); // 如果options为空就不是对象，方法会报错，所以要写为 options || {}
+
+                self = this; // this指调用该方法的jquery对象
+                this.each(function(){ // 使用each允许批量的初始化
+                    // 这儿的self是不可以替换为this的，因为this是当函数运行时才进行解析的，而self在函数定义时就解析。
+                    self.data("options", options);
+                    var nextDay = options.startDay;
+                    for (var i=0; i<options.totalNum; i++) {
+                        nextDay = new Date(nextDay.getTime() + 86400000);
+                        $("<option>" + nextDay + " </option>").appendTo(this);
+                    }
+                });
+                // 发扬jquery的链式调用法则
+                return this;
+            }
+        };
+
+        $.fn.selectDate = function(method){
+            if (methods[method] && method.charAt(0) != "_") {
+                // 传入参数为方法名并不是私有方法时调用
+                methods[method].apply(this, Array.prototype.slice.call(arguments, 1));
+                /*
+                 * method.apply(this, [arg1, arg2]):用obj初始化this来调用method方法 
+                 * method.call(obj, arg1, arg2): 和apply相同， 不同在于后面的参数不是数组
+                 */
+            } else if (typeof method === "object" || !method) {
+                // 传入参数为对象或者为空时调用初始化函数
+                methods.init.apply(this, arguments);
+            } else {
+                $.error("selectDate不含有方法：" + method);
+            }
+        }
+    })(jQuery);
+
+    $("#test").selectDate("init");
+</script>
+</body>
+</html>

@@ -1,0 +1,5 @@
+1.	Ubuntu 14.04 安装搜狗输入法
+	http://jingyan.baidu.com/article/a17d52853f2d9e8098c8f2f6.html
+
+2.	sublime Text3 无法输入中文
+	
