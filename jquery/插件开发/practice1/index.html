@@ -21,7 +21,6 @@
     (function($){
         var methods = {
             init: function(options) {
-                alert();
                 var options = $.extend({
                     totalNum: 7,
                     dateFormat: "",
@@ -36,7 +35,16 @@
                     var nextDay = options.startDay;
                     for (var i=0; i<options.totalNum; i++) {
                         nextDay = new Date(nextDay.getTime() + 86400000);
-                        $("<option>" + nextDay + " </option>").appendTo(this);
+                        var weekDay = nextDay.getDay();
+                        if (weekDay == 0) weekDay = "星期日";
+                        else if (weekDay == 1) weekDay = "星期一";
+                        else if (weekDay == 2) weekDay = "星期二";
+                        else if (weekDay == 3) weekDay = "星期三";
+                        else if (weekDay == 4) weekDay = "星期四";
+                        else if (weekDay == 5) weekDay = "星期五";
+                        else if (weekDay == 6) weekDay = "星期六";
+                        $("<option>" + nextDay.getFullYear() + "-" + (nextDay.getMonth() + 1) + 
+                            "-" + nextDay.getDate() + "　" + weekDay + " </option>").appendTo(this);
                     }
                 });
                 // 发扬jquery的链式调用法则
