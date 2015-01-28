@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <style type="text/css">
+        .before:before {
+            /* content的内容并没有插入到dom文档中，所以并不会改变文档结构 */
+            /*content: "<div style='width:10px;height:10px;background:yellow;'></div>";*/
+
+            content: "1";
+            border: 10px solid transparent;
+        }
+    </style>
+</head>
+<body>
+    <div class="before"></div>
+</body>
+</html>

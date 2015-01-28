@@ -1,0 +1,142 @@
+<!DOCTYPE>
+<html lang="zh-CN">
+<head>
+	<title></title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+	<script>
+		var Touch = {
+			_self: this,
+			points: {
+						start: {
+									pageX: "",
+									pageY: ""
+								},
+						end: {
+								pageX: "",
+								pageY: ""
+							 }
+								
+					},
+			on: function(event_id, dom_id, callback_fun){
+				if (event_id == "up") {
+					_self.up(dom_id, callback_fun));
+				} else if (event_id == "down") {
+					
+				} else if (event_id == "left") {
+					
+				} else if (event_id == "right") {
+					
+				}
+			},
+			up: function(dom_id, callback_fun) {
+				_self.touchstart(dom_id);
+				_self.touchmove(dom_id);
+				var direction = _self.touchend(dom_id);
+				if (direction == "up") {
+					callback_fun();
+				}
+			},
+			touchstart: function(dom_id){
+				$(dom_id).on("touchstart", function(e){
+					console.log("touchstart");
+					var point  = e.originalEvent.touches[0];
+					console.log("X:" + point.pageX + "/" + "Y:" + point.pageY);
+					_self.points.start.pageX = point.pageX;
+					_self.points.start.pageY = point.pageY;
+					_self.points.end.pageX = point.pageX;
+					_self.points.end.pageY = point.pageY;
+				});
+			},
+			touchmove: function(dom_id){
+				$(dom_id).on("touchmove", function(e){
+					console.log("touchmove");
+					var point  = e.originalEvent.touches[0];
+					console.log("X:" + point.pageX + "/" + "Y:" + point.pageY);
+					_self.points.end.pageX = point.pageX;
+					_self.points.end.pageY = point.pageY;
+				});
+			},
+			touchend: function(dom_id){
+				console.log("touchend");
+				var point  = e.originalEvent.touches[0];
+				var direction = moveDirection(points);
+				_self.points.start.pageX = 0;
+				_self.points.start.pageY = 0;
+				_self.points.end.pageX = 0;
+				_self.points.end.pageY = 0;
+				console.log(direction);
+				return direction;
+			}
+		}
+		// 判断是向上/向下滑动
+		var points = {
+						start: {
+							pageX: "",
+							pageY: ""
+						},
+						end : {
+							pageX: "",
+							pageY: ""
+						}
+					 };
+		var moveDirection = function(points) {
+			var x = points.end.pageX - points.start.pageX;
+			var y = points.end.pageY - points.start.pageY;
+			var diff = x*1*x - y*1*y;
+			if (diff < 0) {
+				if (y > 50) {
+					return "down";
+				} else if (y < -50) {-
+					return "up";
+				} else {
+					return "static";
+	L			}
+			} else {
+				if (x > 50) {
+					return "left";
+				} else if (x < -50) {
+					return "right";
+				} else {
+					return "static";
+				}
+			}
+		}
+		$(function(){
+			$("body").on("touchstart", function(e){
+				console.log("touchstart");
+				var point  = e.originalEvent.touches[0];
+				console.log("X:" + point.pageX + "/" + "Y:" + point.pageY);
+				points.start.pageX = point.pageX;
+				points.start.pageY = point.pageY;
+				points.end.pageX = point.pageX;
+				points.end.pageY = point.pageY;
+			});
+			
+			$("body").on("touchmove", function(e){
+				console.log("touchmove");
+				var point  = e.originalEvent.touches[0];
+				console.log("X:" + point.pageX + "/" + "Y:" + point.pageY);
+				points.end.pageX = point.pageX;
+				points.end.pageY = point.pageY;
+			});
+			
+			$("body").on("touchend", function(e){
+				console.log("touchend");
+				var point  = e.originalEvent.touches[0];
+				var direction = moveDirection(points);
+				points.start.pageX = 0;
+				points.start.pageY = 0;
+				points.end.pageX = 0;
+				points.end.pageY = 0;
+				// touchend事件没有point属性
+				//console.log("X:" + point.pageX + "/" + "Y:" + point.pageY);
+				console.log(direction);
+			});
+		});
+	</script>
+</head>
+<body style="background-color: yellow;width: 500px;height: 500px;">
+</body>
+</html>

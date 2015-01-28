@@ -1,0 +1,94 @@
+
+<html>
+    <head>
+        <title>My Now Amazing Webpage</title>
+        <link rel="stylesheet" type="text/css" href="slick.css"/>
+        <style type="text/css">
+            .slick-prev {
+                width: 100px;
+                height: 100px;
+                background-color: black;
+            }
+            .slick-next {
+                width: 100px;
+                height: 100px;
+                background-color: black;
+            }
+            .content {
+                display: inline-block;
+                width: 600px;
+                height: 400px;
+            }
+            /* 设定外部宽度可以设定轮播图的区域大小 */
+            .your-class {
+                width: 600px;
+                height: 400px;
+            }
+            .slick-2 {
+                width: 600px;
+                height: 200px;
+            }
+            .slick-2-nav {
+                width: 600px;
+                height: 200px;
+            }
+        </style>
+    </head>
+    <body>
+
+    <div class="your-class">
+        <!-- 直接把需要轮播的内容列出来就行 -->
+        <div>your content</div>
+        <div>your content</div>
+        <div>your content</div>
+        <!-- 直接写img是不可行的， 要套一个div -->
+        <!-- <img class="content" src="">
+        <img class="content" src="">
+        <img class="content" src=""> -->
+    </div>
+
+    <div class="slick-2">
+        <div style="background:yellow;"></div>
+        <div style="background:blue;"></div>
+        <div style="background:red;"></div>
+        <div style="background:yellow;"></div>
+        <div style="background:blue;"></div>
+        <div style="background:red;"></div>
+    </div>
+    <div class="slick-2-nav">
+        <div style="background:yellow;"></div>
+        <div style="background:blue;"></div>
+        <div style="background:red;"></div>
+        <div style="background:yellow;"></div>
+        <div style="background:blue;"></div>
+        <div style="background:red;"></div>
+    </div>
+
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    <script type="text/javascript" src="slick.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('.your-class').slick({
+                dots: true // 下部标点
+            });
+            $('.slick-2').slick({
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                arrows: false,
+                fade: true,
+                asNavFor: '.slick-2-nav'
+            });
+            $('.slick-2-nav').slick({
+                slidesToShow: 8,
+                slidesToScroll: 1,
+                asNavFor: '.slick-2',
+                dots: true,
+                centerMode: true,
+                focusOnSelect: true
+            });
+        });
+    </script>
+
+    </body>
+</html>

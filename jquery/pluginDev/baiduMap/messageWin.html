@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <style type="text/css">
+        /* private css */
+        body {
+            overflow: hidden;
+        }
+        div.head {
+            width: 100%;
+            height: 200px;
+            background-color: yellow;
+            z-index: 99999;
+        }
+        #map {
+            width: 100%;
+            height: 1000px;
+        }
+        button {
+            width: 500px;
+            height: 200px;
+            position: absolute;
+            top: 300px;
+            left: 600px;
+            z-index: 99999;
+        }
+        div.info {
+            position: fixed;
+            left: -360px;
+            top: 200px;
+            width: 360px;
+            height: 10%;
+            background-color: red;
+            overflow: auto;
+        }
+        div.info ul {
+            list-style: none;
+            padding-left: 8px;
+            font-size: 13px;
+        }
+            div.info>ul>li {
+                padding: 10px 0 10px 0;
+            }
+            li.house-info ul {
+                width: 216px;
+                display: inline-block;
+            }
+            li.house-info li {
+                padding-top: 2px;
+                padding-bottom: 2px;
+            }
+            li.house-info img {
+                height: 67px;
+                width: 90px;
+            }
+            li.house-info li div:first-child {
+                display: inline-block;
+                vertical-align: top;
+            }
+            li.house-info li div:last-child {
+                display:inline-block;
+                width: 150px;
+            }
+        /* 平移出来动画 */
+        .move {
+            animation: myfirst 1s forwards;
+            -moz-animation: myfirst 1s forwards; /* Firefox */
+            -webkit-animation: myfirst 1s forwards;  /* Safari 和 Chrome */
+            -o-animation: myfirst 1s forwards;   /* Opera */
+        }
+        @keyframes myfirst
+        {
+            from {left: -360px;}
+            to {left: 0px;}
+        }
+        @-moz-keyframes myfirst /* Firefox */
+        {
+            from {left: -360px;}
+            to {left: 0px;}
+        }
+        @-webkit-keyframes myfirst /* Safari 和 Chrome */
+        {
+            from {left: -360px;}
+            to {left: 0px;}
+        }
+        @-o-keyframes myfirst /* Opera */
+        {
+            from {left: -360px;}
+            to {left: 0px;}
+        }
+
+    </style>
+    <script src="http://api.map.baidu.com/api?v=2.0&ak=108b50eb45abfdb30d056ec907130e22"></script>
+    <title>纯文本的信息窗口</title>
+</head>
+<body>
+    <div class="head"></div>
+    <button id="test">test</button>
+    <div id="map"></div>
+    <div class="info">
+        <ul>
+            <li class="house-info">
+                <ul>
+                    <li>
+                        <div>公寓品牌:</div>
+                        <div>北京市紫荆豪庭88区88楼88层88号88房门</div>
+                    </li>
+                    <li>
+                        <div>户　　型:</div>
+                        <div>三居室</div>
+                    </li>
+                    <li>
+                        <div>价　　格:</div>
+                        <div>10000元/月</div>
+                    </li>
+                </ul>   
+                <img src="a.png">
+            </li>
+            <li class="house-info">
+                <ul>
+                    <li>
+                        <div>公寓品牌:</div>
+                        <div>北京市紫荆豪庭88区88楼88层88号88房门</div>
+                    </li>
+                    <li>
+                        <div>户　　型:</div>
+                        <div>三居室</div>
+                    </li>
+                    <li>
+                        <div>价　　格:</div>
+                        <div>10000元/月</div>
+                    </li>
+                </ul>   
+                <img src="a.png">
+            </li>
+            <li class="house-info">
+                <ul>
+                    <li>
+                        <div>公寓品牌:</div>
+                        <div>北京市紫荆豪庭88区88楼88层88号88房门</div>
+                    </li>
+                    <li>
+                        <div>户　　型:</div>
+                        <div>三居室</div>
+                    </li>
+                    <li>
+                        <div>价　　格:</div>
+                        <div>10000元/月</div>
+                    </li>
+                </ul>   
+                <img src="a.png">
+            </li>
+            <li class="house-info">
+                <ul>
+                    <li>
+                        <div>公寓品牌:</div>
+                        <div>北京市紫荆豪庭88区88楼88层88号88房门</div>
+                    </li>
+                    <li>
+                        <div>户　　型:</div>
+                        <div>三居室</div>
+                    </li>
+                    <li>
+                        <div>价　　格:</div>
+                        <div>10000元/月</div>
+                    </li>
+                </ul>   
+                <img src="a.png">
+            </li>
+            <li class="house-info">
+                <ul>
+                    <li>
+                        <div>公寓品牌:</div>
+                        <div>北京市紫荆豪庭88区88楼88层88号88房门</div>
+                    </li>
+                    <li>
+                        <div>户　　型:</div>
+                        <div>三居室</div>
+                    </li>
+                    <li>
+                        <div>价　　格:</div>
+                        <div>10000元/月</div>
+                    </li>
+                </ul>   
+                <img src="a.png">
+            </li>
+        </ul>
+    </div>
+    <script src="http://api.map.baidu.com/api?v=2.0&ak=108b50eb45abfdb30d056ec907130e22"></script>
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    <script type="text/javascript">
+        // 百度地图API功能
+        var map = new BMap.Map("map");    // 创建Map实例
+        map.centerAndZoom(new BMap.Point(116.404, 39.915), 11);  // 初始化地图,设置中心点坐标和地图级别
+        map.addControl(new BMap.MapTypeControl());   //添加地图类型控件
+        map.setCurrentCity("北京");          // 设置地图显示的城市 此项是必须设置的
+        map.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放
+
+
+        $(window).on("resize", function(){
+            $(".info").css("height", $(window).height() - $(".head").height());
+        });
+        $(".info").css("height", $(window).height() - $(".head").height());
+
+        $("#test").on("click", function(){
+            $(".info").addClass("move");
+        });
+    </script>
+</body>
+</html>
+<

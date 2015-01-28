@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <style>
+        #demo16{
+          position: relative;
+        }
+        #demo16:after, #demo16:before {
+            content: ' ';
+            border: 10px solid transparent;
+            border-left: 10px solid #fff;
+            width: 0;
+            height: 0;
+            position: absolute;
+            top: 0;
+        }
+        #demo16:before {
+          border-left-color: #f00;
+          right: -21px;
+        }
+
+        #demo17{
+          position: relative;
+        }
+        #demo17:after, #demo17:before {
+            content: ' ';
+            border: 10px solid transparent;
+            border-left: 10px solid #fff;
+            width: 0;
+            height: 0;
+            position: absolute;
+            top: 0;
+        }
+        #demo17:before {
+          border-left-color: #f00;
+          right: -21px;
+        }
+    </style>
+</head>
+<body>
+    <span id="demo15">文字内容</span>
+    <span id="demo16"></span>
+    <br/>
+    <br/>
+    <br/>
+    <div style="background:black;width:100px;height:100px;padding-left:30px;">
+
+        <span id="demo17"></span>
+    </div>
+    
+</body>
+</html>

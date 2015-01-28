@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    <title></title>
+    <div id="test"></div>
+</head>
+<body>
+<script type="text/javascript">
+    $(function(){
+        // 1. $.methodName
+        // $.hello = function() {
+        //     document.write("hello world");
+        // }
+        // $.hello();
+
+        // 2. jQuery.methodName 注意jQuery的第二个字母是大写的
+        // jQuery.hello = function() {
+        //     document.write("hello world");
+        // }
+        // jQuery.hello();
+
+        // 3. $.extend({}); 把参数对象的key值都复制给$对象
+        //    可以一次赋值给多个属性
+        // $.extend({
+        //     hello: function(){
+        //         document.write("<br/>" + "hello world");
+        //     },
+        //     baby: function(){
+        //         document.write("<br/>" + "hello baby");
+        //     }
+        // });
+        // $.hello();
+        // $.baby();
+
+        // 4. 对象级插件开发
+        // (function($){
+        //     $.fn.hello = function() {
+        //          document.write("<br/>" + "hello world");   
+        //     }
+        //     $.fn.extend({
+        //         baby: function() {
+        //             document.write("<br/>" + "hello baby");
+        //         }
+        //     });
+        // })(jQuery);
+        // $("#test").hello();
+        // $("#test").baby();
+
+        // 5. 接受参数来控制插件行为 主要是利用$.extend来实现
+        // (function($){
+        //     $.fn.extend({
+        //         say: function(options){
+        //             var _default = {
+        //                 flg: false
+        //             }
+        //             $.extend(_default, options);
+        //             if (_default.flg) {
+        //                 document.write("<br/>" + "true");
+        //             } else {
+        //                 document.write("<br/>" + "false");
+        //             }
+        //         }
+        //     });
+        // })(jQuery);
+        // $("#test").say({
+        //     flg: true
+        // });
+        // $("#test").say({
+        //     flg: false
+        // });
+        
+        // 6. 暴露默认设置 把所有的默认设置配置在该命名空间下的一个对象中
+        // (function($){
+        //     $.fn.extend({
+        //         say: function(options){
+        //             $.extend($.fn.say.defaults, options);
+        //             if ($.fn.say.defaults.flg) {
+        //                 document.write("<br/>" + "true");
+        //             } else {
+        //                 document.write("<br/>" + "false");
+        //             }
+        //         }
+        //     });
+        //     $.fn.say.defaults = {flg: false};
+        // })(jQuery);
+        //  $.fn.say.defaults.flg = true;
+        // $("#test").say();
+        
+    });
+</script>
+</html>

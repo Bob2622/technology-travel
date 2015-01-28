@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+</head>
+<body>
+
+<script type="text/javascript">
+    // 1 
+    // var obj = {
+    //     options: {
+    //         param1: 1,
+    //         param2: 2,
+    //         param3: 3
+    //     },
+    //     say: function() {
+    //         document.write(obj.options.param1);
+    //     }
+    // }
+    // obj.say();
+    // 2. 
+    var obj = {}
+    obj.options = "hello";
+    (function(){
+        var obj = {
+            // options: 1,
+            say: function() {
+                document.write(obj.options);
+            }
+        }
+        obj.say(); // 1: 闭包中的obj和外面的obj在内存中的位置不同，访问变量名都是从闭包集由内向外寻找
+        document.write(obj.options);
+    })();
+    // document.write(obj.options); // hello:
+</script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <style type="text/css">
+        .fixedBox {
+            width: 100%;
+            height: 200px;
+            background-color: yellow;
+        }
+        .relativeBox {
+            width: 100%;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="fixedBox"></div>
+    <div class="relativeBox"></div>
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(window).on("resize", function(){
+            $(".relativeBox").css("height", $(window).height() - $(".fixedBox").height());
+        });
+        $(".relativeBox").css("height", $(window).height() - $(".fixedBox").height());
+    </script>
+</body>
+</html>

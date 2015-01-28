@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    <style type="text/css">
+        .section {
+            position: relative;
+            border-top: 1px solid #e0e0e0;
+            padding-top: 20px;
+            margin: 0 auto;
+            width: 960px;
+            clear: both;
+            display: block;
+        }
+        .red {
+            display: block;
+            float: left;
+            width: 540px;
+            height: 500px;
+            padding: 0 0 200px 0;
+            background-color: red;
+        }
+        .right {
+            width: 360px;
+            height: 300px;
+            display: inline;
+            float: right;
+        }
+        .blue {
+            position: fixed;
+            top: 20px;
+            width: 360px;
+            height: 300px;
+            background-color: blue;
+            display: block;
+            z-index: 10000;
+        }
+    </style>
+</head>
+<body>
+    <div style="width:100%;height:100px;background: yellow;"></div>
+    <div id="section" class="section">
+        <div class="red"></div>
+        <div class="right"><div id="blue" class="blue" ></div></div>
+    </div>
+</body>
+<script type="text/javascript">
+    // $("body").on("scroll", function() {
+    //     alert();
+    // });
+    // $(window).scroll(function(){
+    //     if ($(window).scrollTop() > 100) {
+    //         $("#blue").css("position", "fixed");
+    //         // $("#blue").css("left", "418px");
+    //     } else {
+    //         $("#blue").css("position", "absolute");
+    //         // $("#blue").css("left", "410px");
+    //     };
+    // });
+
+    // document.getElementsByTagName("body")[0].onscroll = function() {
+    //     if (document.getElementsByTagName("body")[0].scrollTop > 100) {
+    //         // document.getElementById("blue").style.top = document.getElementsByTagName("body")[0].scrollTop  - 100 + "px";
+    //         document.getElementById("blue").style.position = "fixed";
+    //         // document.getElementById("blue").style.left = "418px";
+    //     } else {
+    //         document.getElementById("blue").style.position = "absolute";
+    //     }
+        
+    // }
+</script>
+</html>
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+  <style>
+  div { color:blue; }
+  p { color:green; }
+  span { color:red; display:none; }
+  </style>
+  <script src="http://cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
+</head>
+<body>
+  <div>Try scrolling the iframe.</div>
+  <p>Paragraph - <span>Scroll happened!</span></p>
+<script>
+$("p").clone().appendTo(document.body);
+$("p").clone().appendTo(document.body);
+$("p").clone().appendTo(document.body);
+$(window).scroll(function () {
+  $("span").css("display", "inline").fadeOut("slow");
+});
+</script>
+ 
+</body>
+</html> -->
