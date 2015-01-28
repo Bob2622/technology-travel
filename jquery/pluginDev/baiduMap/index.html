@@ -78,7 +78,6 @@
             top: 200px;
             width: 360px;
             height: 10%;
-            background-color: red;
             overflow: auto;
             z-index: 999999;
         }
@@ -331,6 +330,10 @@
                                     p = new BMap.Point(p.lng, p.lat);
                                     _default.map.centerAndZoom(p, _default.map.getZoom() + 4)
                                 }
+                                var showHouseList = function() {
+                                    // body...
+                                    $(".info").addClass('move');
+                                }
                                 if (data.mapZoom == "1") {
                                     var size = new BMap.Size(-33, -46);
                                 } else if (data.mapZoom == "2") {
@@ -346,6 +349,9 @@
                                     var label = new BMap.Label(pDom(data.mapZoom, data.resultList[i].zoneName,
                                                 data.resultList[i].houseNum), opts);
                                     map.addOverlay(label);
+                                    if (data.mapZoom == "3") {
+                                        label.addEventListener("click" ,showHouseList);
+                                    }
                                     label.addEventListener("click" ,centerAndZoom);
                                 }
                 
